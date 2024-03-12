@@ -31,7 +31,6 @@ const fetchAll = function() {
                 link.href = element.node.slug;
                 link.innerHTML = element.node.title;
                 link.className = "underline";
-                link.addEventListener('click', handleLocation);
                 const date = document.createElement('p');
                 date.className = "pb-4 font-light";
                 date.innerHTML = new Date(element.node.publishedAt).toDateString();
@@ -86,7 +85,7 @@ const fetchPost = function () {
         content.className = "px-10"
         content.innerHTML = res.data.publication.post.content.html;
         page.appendChild(content);
-        window.history.replaceState({}, res.data.publication.post.title, res.data.publication.post.slug);
+        window.location = res.data.publication.post.slug;
     })
 }
 
@@ -99,22 +98,3 @@ const router = function() {
 }
 
 router()
-
-
-const handleLocation = function(event) {
-    var location = window.location.pathname;
-    if (event) {
-        event.preventDefault();
-        location = this.getAttribute('href');
-        const title = this.href;
-        window.history.replaceState({}, title, location);
-    } else {
-        console.log("called on paint");
-    }
-
-    if (location.length > 1) {
-        fetchPost();
-    }
-}
-
-window.onpaint = handleLocation();
