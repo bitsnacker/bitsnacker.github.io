@@ -85,7 +85,6 @@ const fetchPost = function () {
         content.className = "px-10"
         content.innerHTML = res.data.publication.post.content.html;
         page.appendChild(content);
-        window.location = res.data.publication.post.slug;
     })
 }
 
