@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = 'components/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
+    <script src="./scripts/hashnode.js"></script>
+    <link href="./output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="page-container" class="container mx-auto px-10 mb-10">
+        <div data-include="showcase"></div>
+        <div id="hashnode-posts" class="px-10 font-sans">
+            <div class="font-bold pb-4 text-3xl">Recent posts</div>
+        </div>
+        <p data-include="footer" class="px-10"></p>
+    </div>
+</body>
+
+</html>
